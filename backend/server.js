@@ -72,6 +72,7 @@ function initializeProducts() {
             { id: nanoid(6), title: 'Яблоки', category: 'Фрукты', description: 'Сорт: Белый налив', price: 155 }
         ];
         products.push(...initialProducts);
+
     }
 }
 

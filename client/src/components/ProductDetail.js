@@ -153,16 +153,24 @@ const ProductDetail = ({ user }) => {
             </div>
           </div>
 
-          {(user?.role === 'seller' || user?.role === 'admin') && (
+          {/* Кнопки доступны только для продавцов */}
+          {user?.role === 'seller' && (
             <div style={styles.buttonGroup}>
               <button onClick={() => setIsEditing(true)} style={styles.editBtn}>
                 Редактировать
               </button>
-              {user?.role === 'admin' && (
-                <button onClick={handleDelete} style={styles.deleteBtn}>
-                  Удалить
-                </button>
-              )}
+              <button onClick={handleDelete} style={styles.deleteBtn}>
+                Удалить
+              </button>
+            </div>
+          )}
+
+          {/* Для администратора только удаление */}
+          {user?.role === 'admin' && (
+            <div style={styles.buttonGroup}>
+              <button onClick={handleDelete} style={styles.deleteBtn}>
+                Удалить
+              </button>
             </div>
           )}
         </div>
@@ -291,7 +299,8 @@ const styles = {
     border: '1px solid #382f45',
     borderRadius: '8px',
     fontSize: '0.9rem',
-    color: '#e0e0e0',outline: 'none',
+    color: '#e0e0e0',
+    outline: 'none',
     minHeight: '120px',
     resize: 'vertical',
     fontFamily: 'inherit',
